@@ -1,6 +1,6 @@
 # `kickstart-nix.nvim`
 
-A simple [Nix](https://nixos.org/) flake template for Neovim derivations. 
+A simple [Nix](https://nixos.org/) flake template repository for Neovim derivations. 
 
 [![Neovim][neovim-shield]][neovim-url]
 [![Nix][nix-shield]][nix-url]
