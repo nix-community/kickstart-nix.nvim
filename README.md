@@ -207,7 +207,8 @@ You can add or remove plugins by
 > repository would be more comparable to `kickstart.nvim` (hence the name),
 > while the philosophies of `neovim-flake` and `NixVim` are more in line with
 > a Neovim distribution like [`LunarVim`](https://www.lunarvim.org/)
-> or [`LazyVim`](https://www.lazyvim.org/).
+> or [`LazyVim`](https://www.lazyvim.org/)
+> (though they are more minimal by default).
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [neovim-shield]: https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white
