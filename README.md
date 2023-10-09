@@ -20,6 +20,7 @@ to start a repo based on this template. **Do _not_ fork it**.
 1. Add/remove plugins to/from the [Neovim overlay](./nix/neovim-overlay.nix).
 1. Add/remove plugin configs to/from the `nvim/plugin` directory.
 1. Modify as you wish (you will probably want to add a color theme, ...).
+   See: [Design](#design).
 
 ## Installation
 
@@ -90,6 +91,15 @@ Directory structure:
      └── <plugin-config>.lua # Plugin configurations
 ```
 
+> **Important**
+>
+> - Configuration variables (e.g. `vim.g.<plugin_config>`) should go in `nvim/init.lua`
+>   or a module that is `require`d in `init.lua`.
+> - Configurations for plugins that require explicit initialization
+>   (e.g. via a call to a `setup()` function) should go in `nvim/plugin/<plugin>.lua`
+>   or `nvim/plugin/plugins.lua`.
+> - See [Initialization order](#initialization-order) for details.
+
 ### Nix
 
 You can declare Neovim derivations in `nix/neovim-overlay.nix`.
@@ -109,6 +119,20 @@ Directory structure:
   ├── neovim-overlay.nix # Overlay that adds Neovim derivation
   └── plugin-overlay.nix # Overlay that builds flake input plugins
 ```
+
+### Initialization order
+
+This derivation creates an `init.lua` as follows:
+
+1. Add `nvim/lua` to the `runtimepath`.
+1. Add the content of `nvim/init.lua`.
+1. Add `nvim/*` to the `runtimepath`.
+
+This means that modules in `nvim/lua` can be `require`d in `init.lua` and `nvim/*/*.lua`.
+
+Modules in `nvim/plugin/` are sourced automatically, as if they were plugins.
+Because they are added to the runtime path at the end of the resulting `init.lua`,
+Neovim sources them _after_ loading plugins.
 
 ## Pre-configured plugins
 
