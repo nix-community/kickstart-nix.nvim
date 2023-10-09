@@ -47,6 +47,8 @@ nix profile install .#nvim
 - Slightly opinionated defaults.
 - Manage plugins + external dependencies using Nix
   (managing plugins shouldn't be the responsibility of a plugin).
+- Configuration entirely in Lua[^1] (Vimscript is also possible).
+  This makes it easy to migrate from non-nix dotfiles[^2].
 - Usable on any device with Neovim and Nix installed.
 - Ability to create multiple derivations with different sets of plugins.
 - Use either nixpkgs or flake inputs as plugin source.
@@ -54,6 +56,10 @@ nix profile install .#nvim
     - See [`:h initializaion`](https://neovim.io/doc/user/starting.html#initialization)
       and [`:h runtimepath`](https://neovim.io/doc/user/options.html#'runtimepath').
 - Use Neovim's built-in LSP client.
+
+[^1]: If you were to copy the `nvim` directory to `$XDG_CONFIG_HOME`,
+      it would work out of the box.
+[^2]: Caveat: `after/` directories are not sourced in the Nix derivation.
 
 ## Design
 
