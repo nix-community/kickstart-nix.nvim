@@ -1,6 +1,30 @@
-# `kickstart-nix.nvim`
-
-A simple [Nix](https://nixos.org/) flake template repository for Neovim derivations. 
+<!-- markdownlint-disable -->
+<br />
+<div align="center">
+  <a href="https://github.com/mrcjkb/kickstart-nix.nvim">
+    <img src="./nvim-nix.svg" alt="kickstart-nix.nvim">
+  </a>
+  <!-- TODO: -->
+  <!-- <p align="center"> -->
+    <!-- <br /> -->
+    <!-- TODO: -->
+    <!-- <a href="./nvim/doc/kickstart-nix.txt"><strong>Explore the docs »</strong></a> -->
+    <!-- <br /> -->
+    <!-- <br /> -->
+    <!-- <a href="https://github.com/mrcjkb/kickstart-nix.nvim/issues/new?assignees=&labels=bug&projects=&template=bug_report.yml">Report Bug</a> -->
+    <!-- · -->
+    <!-- <a href="https://github.com/mrcjkb/kickstart-nix.nvim/issues/new?assignees=&labels=enhancement&projects=&template=feature_request.yml">Request Feature</a> -->
+    <!-- · -->
+    <!-- <a href="https://github.com/mrcjkb/kickstart-nix.nvim/discussions/new?category=q-a">Ask Question</a> -->
+  <!-- </p> -->
+  <p>
+    <strong>
+      A simple <a href="https://nixos.org/">Nix</a> flake template repository for <a href="https://neovim.io/">Neovim</a> derivations. 
+    </strong>
+  </p>
+  <p>❄️</p>
+</div>
+<!-- markdownlint-restore -->
 
 [![Neovim][neovim-shield]][neovim-url]
 [![Nix][nix-shield]][nix-url]
