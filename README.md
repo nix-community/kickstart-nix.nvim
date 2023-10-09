@@ -4,6 +4,16 @@ A simple [Nix](https://nixos.org/) flake template for Neovim derivations.
 
 ![](https://github.com/mrcjkb/kickstart-nix.nvim/assets/12857160/84faa268-82de-4401-acf3-efddc26dd58a)
 
+## Quick Links
+
+- [Test drive](#test-drive)
+- [Usage](#usage)
+- [Installation](#installation)
+- [Philosophy](#philosophy)
+- [Design](#design)
+- [Pre-configured plugins](#pre-configured-plugins)
+- [Alternative / similar projects](#alternative--similar-projects)
+
 ## Test drive
 
 If you have Nix installed (with [flakes](https://nixos.wiki/wiki/Flakes) enabled),
@@ -143,7 +153,7 @@ You can add or remove plugins by
 - Adding/Removing them in the [Nix list](./nix/neovim-overlay.nix).
 - Adding/Removing the config in `nvim/plugin/<plugin>.lua`.
 
-## Alternative / Similar projects
+## Alternative / similar projects
 
 - [`neovim-flake`](https://github.com/jordanisaacs/neovim-flake):
   Configured using a Nix module DSL.
