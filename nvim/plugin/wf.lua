@@ -37,3 +37,17 @@ vim.keymap.set(
   which_key { text_insert_in_advance = '<Space>' },
   { noremap = true, silent = true, desc = '[wf.nvim] which-key /' }
 )
+
+vim.keymap.set(
+  'n',
+  '[',
+  which_key { text_insert_in_advance = '[' },
+  { noremap = true, silent = true, desc = '[wf.nvim] which-key [' }
+)
+
+vim.keymap.set(
+  'n',
+  ']',
+  which_key { text_insert_in_advance = ']' },
+  { noremap = true, silent = true, desc = '[wf.nvim] which-key ]' }
+)
