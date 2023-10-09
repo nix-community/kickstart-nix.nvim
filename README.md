@@ -63,6 +63,12 @@ to start a repo based on this template. **Do _not_ fork it**.
 1. Modify as you wish (you will probably want to add a color theme, ...).
    See: [Design](#design).
 
+> **Note**
+>
+> Similar to [`kickstart.nvim`](https://github.com/nvim-lua/kickstart.nvim),
+> this repository is meant to be used by **you** to begin your
+> **Nix**/Neovim journey; remove the things you don't use and add what you miss.
+
 ## Installation
 
 ### NixOS (with flakes)
