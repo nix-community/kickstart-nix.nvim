@@ -116,7 +116,7 @@ nix profile install .#nvim
 
 Directory structure:
 
-```console
+```sh
 ── nvim
   ├── ftplugin # Sourced when opening a file type
   │  └── <filetype>.lua
@@ -153,7 +153,7 @@ There are two ways to add plugins:
 
 Directory structure:
 
-```console
+```sh
 ── flake.nix
 ── nix
   ├── mkNeovim.nix # Function for creating the Neovim derivation
