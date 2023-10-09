@@ -100,7 +100,8 @@ nix profile install .#nvim
       and [`:h runtimepath`](https://neovim.io/doc/user/options.html#'runtimepath').
 - Use Neovim's built-in LSP client.
 
-[^1]: If you were to copy the `nvim` directory to `$XDG_CONFIG_HOME`,
+[^1]: The absence of a Nix module DSL for Neovim configuration is deliberate.
+      If you were to copy the `nvim` directory to `$XDG_CONFIG_HOME`,
       it would work out of the box.
 [^2]: Caveat: `after/` directories are not sourced in the Nix derivation.
 
@@ -186,15 +187,23 @@ You can add or remove plugins by
 
 ## Alternative / similar projects
 
+- [`kickstart.nvim`](https://github.com/nvim-lua/kickstart.nvim):
+  Single-file Neovim configuration template with a similar philosophy to this project.
+  Does not use Nix to manage plugins.
 - [`neovim-flake`](https://github.com/jordanisaacs/neovim-flake):
   Configured using a Nix module DSL.
-- [`nixvim`](https://github.com/nix-community/nixvim):
+- [`NixVim`](https://github.com/nix-community/nixvim):
   A Neovim distribution configured using a NixOS module.
-- [`kickstart.nvim`](https://github.com/nvim-lua/kickstart.nvim):
-  Single-file Neovim configuration template.
-  Does not use Nix to manage plugins.
 
-<!-- MARKDOWN LNIKS & IMAGES -->
+> **Note**
+>
+> When comparing with projects in the "non-Nix world", this
+> repository would be more comparable to `kickstart.nvim` (hence the name),
+> while the philosophies of `neovim-flake` and `NixVim` are more in line with
+> a Neovim distribution like [`LunarVim`](https://www.lunarvim.org/)
+> or [`LazyVim`](https://www.lazyvim.org/).
+
+<!-- MARKDOWN LINKS & IMAGES -->
 [neovim-shield]: https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white
 [neovim-url]: https://neovim.io/
 [nix-shield]: https://img.shields.io/badge/nix-0175C2?style=for-the-badge&logo=NixOS&logoColor=white
