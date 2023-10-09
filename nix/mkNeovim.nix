@@ -14,6 +14,7 @@ with lib;
     resolvedExtraLuaPackages ? [], # Additional lua packages (not plugins)
     extraPython3Packages ? p: [], # Additional python 3 packages
     withPython3 ? true,
+    withSqlite ? true,
     withRuby ? false,
     withNodeJs ? false,
     viAlias ? true,
@@ -26,7 +27,7 @@ with lib;
       runtime = {};
     };
 
-    externalPackages = extraPackages ++ [pkgs.sqlite];
+    externalPackages = extraPackages ++ (optionals withSqlite [pkgs.sqlite]);
 
     normalizedPlugins = map (x:
       defaultPlugin
@@ -78,10 +79,10 @@ with lib;
         ''--prefix PATH : "${makeBinPath externalPackages}"'')
       ++ (optional wrapRc
         ''--add-flags -u --add-flags "${pkgs.writeText "init.lua" customRC}"'')
-      ++ [
-        ''--set LIBSQLITE_CLIB_PATH "${pkgs.sqlite.out}/lib/libsqlite3.so"''
-        ''--set LIBSQLITE "${pkgs.sqlite.out}/lib/libsqlite3.so"''
-      ]
+      ++ (optional withSqlite 
+        ''--set LIBSQLITE_CLIB_PATH "${pkgs.sqlite.out}/lib/libsqlite3.so"'')
+      ++ (optional withSqlite 
+        ''--set LIBSQLITE "${pkgs.sqlite.out}/lib/libsqlite3.so"'')
     );
 
     extraMakeWrapperLuaCArgs = optionalString (resolvedExtraLuaPackages != []) ''
