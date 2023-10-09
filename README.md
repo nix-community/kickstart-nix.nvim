@@ -2,6 +2,13 @@
 
 A simple [Nix](https://nixos.org/) flake template for Neovim derivations. 
 
+[![Neovim][neovim-shield]][neovim-url]
+[![Nix][nix-shield]][nix-url]
+[![Lua][lua-shield]][lua-url]
+
+[![GPL2 License][license-shield]][license-url]
+[![Issues][issues-shield]][issues-url]
+
 ![](https://github.com/mrcjkb/kickstart-nix.nvim/assets/12857160/84faa268-82de-4401-acf3-efddc26dd58a)
 
 ## Quick Links
@@ -162,3 +169,17 @@ You can add or remove plugins by
 - [`kickstart.nvim`](https://github.com/nvim-lua/kickstart.nvim):
   Single-file Neovim configuration template.
   Does not use Nix to manage plugins.
+
+<!-- MARKDOWN LNIKS & IMAGES -->
+[neovim-shield]: https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white
+[neovim-url]: https://neovim.io/
+[nix-shield]: https://img.shields.io/badge/nix-0175C2?style=for-the-badge&logo=NixOS&logoColor=white
+[nix-url]: https://nixos.org/
+[lua-shield]: https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white
+[lua-url]: https://www.lua.org/
+[license-shield]: https://img.shields.io/github/license/mrcjkb/kickstart-nix.nvim.svg?style=for-the-badge
+[license-url]: https://github.com/mrcjkb/kickstart-nix.nvim/blob/master/LICENSE
+[issues-shield]: https://img.shields.io/github/issues/mrcjkb/kickstart-nix.nvim.svg?style=for-the-badge
+[issues-url]: https://github.com/mrcjkb/kickstart-nix.nvim/issues
+[license-shield]: https://img.shields.io/github/license/mrcjkb/kickstart-nix.nvim.svg?style=for-the-badge
+[license-url]: https://github.com/mrcjkb/kickstart-nix.nvim/blob/master/LICENSE
