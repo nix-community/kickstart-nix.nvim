@@ -1,12 +1,13 @@
 # `kickstart-nix.nvim`
 
-A simple Nix flake template for Neovim derivations. 
+A simple [Nix](https://nixos.org/) flake template for Neovim derivations. 
 
 ![](https://github.com/mrcjkb/kickstart-nix.nvim/assets/12857160/84faa268-82de-4401-acf3-efddc26dd58a)
 
 ## Test drive
 
-If you have Nix installed (with flakes enabled), you can test drive this by running:
+If you have Nix installed (with [flakes](https://nixos.wiki/wiki/Flakes) enabled),
+you can test drive this by running:
 
 ```console
 nix run "github:mrcjkb/kickstart-nix.nvim"
@@ -117,3 +118,13 @@ You can add or remove plugins by
 
 - Adding/Removing them in the [Nix list](./nix/neovim-overlay.nix).
 - Adding/Removing the config in `nvim/plugin/<plugin>.lua`.
+
+## Alternative / Similar projects
+
+- [`neovim-flake`](https://github.com/jordanisaacs/neovim-flake):
+  Configured using a Nix module DSL.
+- [`nixvim`](https://github.com/nix-community/nixvim):
+  A Neovim distribution configured using a NixOS module.
+- [`kickstart.nvim`](https://github.com/nvim-lua/kickstart.nvim):
+  Single-file Neovim configuration template.
+  Does not use Nix to manage plugins.
