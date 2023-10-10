@@ -35,6 +35,14 @@
 
 ![](https://github.com/mrcjkb/kickstart-nix.nvim/assets/12857160/84faa268-82de-4401-acf3-efddc26dd58a)
 
+If Nix and Neovim have one thing in common, it's that many new users don't know where to get started. Most Nix-based Neovim setups assume deep expertise in both realms, abstracting away Neovim's core functionalities as well as the Nix internals used to build a Neovim config. `kickstart-nix.nvim` is different: It's geared for users of all levels, making the migration of Neovim configurations to Nix straightforward.
+
+> **Note**
+>
+> Similar to [`kickstart.nvim`](https://github.com/nvim-lua/kickstart.nvim),
+> this repository is meant to be used by **you** to begin your
+> **Nix**/Neovim journey; remove the things you don't use and add what you miss.
+
 ## Quick Links
 
 - [Test drive](#test-drive)
@@ -62,12 +70,6 @@ to start a repo based on this template. **Do _not_ fork it**.
 1. Add/remove plugin configs to/from the `nvim/plugin` directory.
 1. Modify as you wish (you will probably want to add a color theme, ...).
    See: [Design](#design).
-
-> **Note**
->
-> Similar to [`kickstart.nvim`](https://github.com/nvim-lua/kickstart.nvim),
-> this repository is meant to be used by **you** to begin your
-> **Nix**/Neovim journey; remove the things you don't use and add what you miss.
 
 ## Installation
 
