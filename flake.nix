@@ -26,16 +26,13 @@
       "aarch64-darwin"
     ];
 
-    # This is where the bleeding-edge plugins are built.
-    plugin-overlay = import ./nix/plugin-overlay.nix {inherit inputs;};
     # This is where the Neovim derivation is built.
-    neovim-overlay = import ./nix/neovim-overlay.nix;
+    neovim-overlay = import ./nix/neovim-overlay.nix {inherit inputs;};
   in
     flake-utils.lib.eachSystem supportedSystems (system: let
       pkgs = import nixpkgs {
         inherit system;
         overlays = [
-          plugin-overlay
           neovim-overlay
         ];
       };

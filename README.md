@@ -85,6 +85,14 @@ nixpkgs.overlays = [
 ];
 ```
 
+You can then add the overlay's output(s) to the `systemPackages`:
+
+```nix
+environment.systemPackages = with pkgs; [
+    nvim-pkg # The default package added by the overlay
+];
+```
+
 ### Non-NixOS
 
 With Nix installed (flakes enabled), from the repo root:
