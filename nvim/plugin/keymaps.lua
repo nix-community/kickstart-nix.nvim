@@ -115,6 +115,11 @@ keymap.set('n', '<leader>h-', function()
   api.nvim_win_set_height(0, toIntegral(curWinHeight * 2 / 3))
 end, { silent = true, desc = 'dec window height' })
 
+-- Close floating windows
+keymap.set('n', '<leader>fq', function()
+  vim.cmd('fclose!')
+end, { silent = true, desc = 'close all floating windows' })
+
 -- Remap Esc to switch to normal mode and Ctrl-Esc to pass Esc to terminal
 keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'switch to normal mode' })
 keymap.set('t', '<C-Esc>', '<Esc>', { desc = 'send Esc to terminal' })
