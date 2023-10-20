@@ -175,7 +175,6 @@ Directory structure:
 ── nix
   ├── mkNeovim.nix # Function for creating the Neovim derivation
   ├── neovim-overlay.nix # Overlay that adds Neovim derivation
-  └── plugin-overlay.nix # Overlay that builds flake input plugins
 ```
 
 ### Initialization order
