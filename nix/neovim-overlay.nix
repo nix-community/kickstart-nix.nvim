@@ -25,6 +25,7 @@ with final.pkgs.lib; let
     cmp-buffer # current buffer as completion source | https://github.com/hrsh7th/cmp-buffer/
     cmp-path # file paths as completion source | https://github.com/hrsh7th/cmp-path/
     cmp-nvim-lua # neovim lua API as completion source | https://github.com/hrsh7th/cmp-nvim-lua/
+    cmp-cmdline # cmp command line suggestions
     # ^ nvim-cmp extensions
     # git integration plugins
     diffview-nvim # https://github.com/sindrets/diffview.nvim/
