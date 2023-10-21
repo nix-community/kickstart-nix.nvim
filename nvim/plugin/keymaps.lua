@@ -5,14 +5,6 @@ local fn = vim.fn
 local keymap = vim.keymap
 local diagnostic = vim.diagnostic
 
--- Automatic management of search highlight
-local auto_hlsearch_namespace = vim.api.nvim_create_namespace('auto_hlsearch')
-vim.on_key(function(char)
-  if vim.fn.mode() == 'n' then
-    vim.opt.hlsearch = vim.tbl_contains({ '<CR>', 'n', 'N', '*', '#', '?', '/' }, vim.fn.keytrans(char))
-  end
-end, auto_hlsearch_namespace)
-
 -- Yank from current position till end of current line
 keymap.set('n', 'Y', 'y$', { silent = true, desc = 'yank to end of line' })
 
@@ -115,7 +107,7 @@ keymap.set('n', '<leader>h-', function()
   api.nvim_win_set_height(0, toIntegral(curWinHeight * 2 / 3))
 end, { silent = true, desc = 'dec window height' })
 
--- Close floating windows
+-- Close floating windows [Neovim 0.10 and above]
 keymap.set('n', '<leader>fq', function()
   vim.cmd('fclose!')
 end, { silent = true, desc = 'close all floating windows' })
@@ -140,6 +132,10 @@ local severity = diagnostic.severity
 
 keymap.set('n', '<space>e', function()
   local _, winid = diagnostic.open_float(nil, { scope = 'line' })
+  if not winid then
+    vim.notify('no diagnostics found', vim.log.levels.INFO)
+    return
+  end
   vim.api.nvim_win_set_config(winid or 0, { focusable = true })
 end, { noremap = true, silent = true, desc = 'diagnostics floating window' })
 keymap.set('n', '[d', diagnostic.goto_prev, { noremap = true, silent = true, desc = 'previous diagnostic' })
@@ -186,5 +182,18 @@ keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'move down half-page and center' })
 keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'move up half-page and center' })
 keymap.set('n', '<C-f>', '<C-f>zz', { desc = 'move down full-page and center' })
 keymap.set('n', '<C-b>', '<C-b>zz', { desc = 'move up full-page and center' })
+
+--- Disabled keymaps [enable at your own risk]
+
+-- Automatic management of search highlight
+-- XXX: This is not so nice if you use j/k for navigation
+-- (you should be using <C-d>/<C-u> and relative line numbers instead ;)
+--
+-- local auto_hlsearch_namespace = vim.api.nvim_create_namespace('auto_hlsearch')
+-- vim.on_key(function(char)
+--   if vim.fn.mode() == 'n' then
+--     vim.opt.hlsearch = vim.tbl_contains({ '<CR>', 'n', 'N', '*', '#', '?', '/' }, vim.fn.keytrans(char))
+--   end
+-- end, auto_hlsearch_namespace)
 
 return M
