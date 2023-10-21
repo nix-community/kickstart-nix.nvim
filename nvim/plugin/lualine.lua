@@ -37,36 +37,37 @@ require('lualine').setup {
   options = {
     theme = 'auto',
   },
-  tabline = {
-    lualine_a = {
-      {
-        'tabs',
-        mode = 1,
-      },
-    },
-    lualine_b = {
-      {
-        'buffers',
-        show_filename_only = true,
-        show_bufnr = true,
-        mode = 4,
-        filetype_names = {
-          TelescopePrompt = 'Telescope',
-          dashboard = 'Dashboard',
-          fzf = 'FZF',
-        },
-        buffers_color = {
-          -- Same values as the general color option can be used here.
-          active = 'lualine_b_normal', -- Color for active buffer.
-          inactive = 'lualine_b_inactive', -- Color for inactive buffer.
-        },
-      },
-    },
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {},
-  },
+  -- Example top tabline configuration (this may clash with other plugins)
+  -- tabline = {
+  --   lualine_a = {
+  --     {
+  --       'tabs',
+  --       mode = 1,
+  --     },
+  --   },
+  --   lualine_b = {
+  --     {
+  --       'buffers',
+  --       show_filename_only = true,
+  --       show_bufnr = true,
+  --       mode = 4,
+  --       filetype_names = {
+  --         TelescopePrompt = 'Telescope',
+  --         dashboard = 'Dashboard',
+  --         fzf = 'FZF',
+  --       },
+  --       buffers_color = {
+  --         -- Same values as the general color option can be used here.
+  --         active = 'lualine_b_normal', -- Color for active buffer.
+  --         inactive = 'lualine_b_inactive', -- Color for inactive buffer.
+  --       },
+  --     },
+  --   },
+  --   lualine_c = {},
+  --   lualine_x = {},
+  --   lualine_y = {},
+  --   lualine_z = {},
+  -- },
   winbar = {
     lualine_z = {
       {
