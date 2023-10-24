@@ -19,10 +19,6 @@ local function complete_with_source(source)
   end
 end
 
-local function complete_with_source_mapping(name, modes)
-  return cmp.mapping.complete { config = { sources = { { name = name } } }, modes }
-end
-
 cmp.setup {
   completion = {
     completeopt = 'menu,menuone,noinsert',

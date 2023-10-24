@@ -1,5 +1,3 @@
-local M = {}
-
 local api = vim.api
 local fn = vim.fn
 local keymap = vim.keymap
@@ -195,5 +193,3 @@ keymap.set('n', '<C-b>', '<C-b>zz', { desc = 'move up full-page and center' })
 --     vim.opt.hlsearch = vim.tbl_contains({ '<CR>', 'n', 'N', '*', '#', '?', '/' }, vim.fn.keytrans(char))
 --   end
 -- end, auto_hlsearch_namespace)
-
-return M

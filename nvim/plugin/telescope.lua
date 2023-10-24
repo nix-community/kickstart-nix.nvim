@@ -3,8 +3,6 @@ local actions = require('telescope.actions')
 
 local builtin = require('telescope.builtin')
 
-local extensions = telescope.extensions
-
 local layout_config = {
   vertical = {
     width = function(_, max_columns)
@@ -113,7 +111,6 @@ telescope.setup {
       },
       n = {
         q = actions.close,
-        s = flash,
       },
     },
     preview = {
