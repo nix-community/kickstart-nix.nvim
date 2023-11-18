@@ -209,6 +209,9 @@ You can add or remove plugins by
   Configured using a Nix module DSL.
 - [`NixVim`](https://github.com/nix-community/nixvim):
   A Neovim distribution configured using a NixOS module.
+- [`nixCats-nvim`](https://github.com/BirdeeHub/nixCats-nvim):
+  A project with a similar philosophy to this one
+  that organises plugins into categories.
 
 > **Note**
 >
