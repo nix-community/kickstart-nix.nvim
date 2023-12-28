@@ -123,6 +123,14 @@ nix profile install .#nvim
 
 ## Design
 
+Directory structure:
+
+```sh
+── flake.nix
+── nvim # Neovim configs (lua), equivalent to ~/.config/nvim
+── nix # Nix configs
+```
+
 ### Neovim configs
 
 - Set options in `init.lua`.
