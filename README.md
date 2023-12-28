@@ -37,7 +37,7 @@
 
 If Nix and Neovim have one thing in common, it's that many new users don't know where to get started. Most Nix-based Neovim setups assume deep expertise in both realms, abstracting away Neovim's core functionalities as well as the Nix internals used to build a Neovim config. `kickstart-nix.nvim` is different: It's geared for users of all levels, making the migration of Neovim configurations to Nix straightforward.
 
-> **Note**
+> [!NOTE]
 >
 > Similar to [`kickstart.nvim`](https://github.com/nvim-lua/kickstart.nvim),
 > this repository is meant to be used by **you** to begin your
@@ -160,7 +160,7 @@ Directory structure:
      └── ftplugin # Sourced when opening a filetype, after sourcing ftplugin scripts
 ```
 
-> **Important**
+> [!IMPORTANT]
 >
 > - Configuration variables (e.g. `vim.g.<plugin_config>`) should go in `nvim/init.lua`
 >   or a module that is `require`d in `init.lua`.
@@ -246,7 +246,7 @@ git merge upstream/main --allow-unrelated-histories
   For lazy.nvim users who would like to manage plugins with Nix,
   but load them with lazy.nvim.
 
-> **Note**
+> [!NOTE]
 >
 > When comparing with projects in the "non-Nix world", this
 > repository would be more comparable to `kickstart.nvim` (hence the name),
