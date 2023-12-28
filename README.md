@@ -17,12 +17,13 @@
     <!-- · -->
     <!-- <a href="https://github.com/mrcjkb/kickstart-nix.nvim/discussions/new?category=q-a">Ask Question</a> -->
   <!-- </p> -->
+  <p>❄️</p>
   <p>
     <strong>
-      A simple <a href="https://nixos.org/">Nix</a> flake template repository for <a href="https://neovim.io/">Neovim</a> derivations. 
+      A dead simple <a href="https://nixos.org/">Nix</a> flake template repository</br>
+      for <a href="https://neovim.io/">Neovim</a> 
     </strong>
   </p>
-  <p>❄️</p>
 </div>
 <!-- markdownlint-restore -->
 
