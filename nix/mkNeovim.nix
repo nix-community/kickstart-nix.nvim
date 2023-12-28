@@ -70,6 +70,7 @@ with lib;
       )
       + ''
         vim.opt.rtp:append('${../nvim}')
+        vim.opt.rtp:append('${../nvim/after}')
       '';
 
     extraMakeWrapperArgs = builtins.concatStringsSep " " (

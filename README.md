@@ -104,11 +104,11 @@ nix profile install .#nvim
 
 ## Philosophy
 
-- Slightly opinionated defaults.
+- KISS principle with sane defaults.
 - Manage plugins + external dependencies using Nix
   (managing plugins shouldn't be the responsibility of a plugin).
 - Configuration entirely in Lua[^1] (Vimscript is also possible).
-  This makes it easy to migrate from non-nix dotfiles[^2].
+  This makes it easy to migrate from non-nix dotfiles.
 - Usable on any device with Neovim and Nix installed.
 - Ability to create multiple derivations with different sets of plugins.
 - Use either nixpkgs or flake inputs as plugin source.
@@ -119,8 +119,7 @@ nix profile install .#nvim
 
 [^1]: The absence of a Nix module DSL for Neovim configuration is deliberate.
       If you were to copy the `nvim` directory to `$XDG_CONFIG_HOME`,
-      it would work out of the box.
-[^2]: Caveat: `after/` directories are not sourced in the Nix derivation.
+      and install the plugins, it would work out of the box.
 
 ## Design
 
@@ -142,12 +141,15 @@ Directory structure:
   ├── lua # Shared library modules
   │  └── user
   │     └── <lib>.lua
-  └── plugin # Automatically sourced at startup
-     ├── autocommands.lua
-     ├── commands.lua
-     ├── keymaps.lua
-     ├── plugins.lua # Plugins that require a `setup` call
-     └── <plugin-config>.lua # Plugin configurations
+  ├── plugin # Automatically sourced at startup
+  │  ├── autocommands.lua
+  │  ├── commands.lua
+  │  ├── keymaps.lua
+  │  ├── plugins.lua # Plugins that require a `setup` call
+  │  └── <plugin-config>.lua # Plugin configurations
+  └── after # Empty in this template
+     ├── plugin # Sourced at the very end of startup (rarely needed)
+     └── ftplugin # Sourced when opening a filetype, after sourcing ftplugin scripts
 ```
 
 > **Important**
@@ -185,6 +187,7 @@ This derivation creates an `init.lua` as follows:
 1. Add `nvim/lua` to the `runtimepath`.
 1. Add the content of `nvim/init.lua`.
 1. Add `nvim/*` to the `runtimepath`.
+1. Add `nvim/after` to the `runtimepath`.
 
 This means that modules in `nvim/lua` can be `require`d in `init.lua` and `nvim/*/*.lua`.
 
@@ -231,6 +234,9 @@ git merge upstream/main --allow-unrelated-histories
 - [`nixCats-nvim`](https://github.com/BirdeeHub/nixCats-nvim):
   A project with a similar philosophy to this one
   that organises plugins into categories.
+- [`lazy-nix-helper.nvim`](https://github.com/b-src/lazy-nix-helper.nvim):
+  For lazy.nvim users who would like to manage plugins with Nix,
+  but load them with lazy.nvim.
 
 > **Note**
 >
