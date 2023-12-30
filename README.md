@@ -241,8 +241,8 @@ git merge upstream/main --allow-unrelated-histories
 - [`NixVim`](https://github.com/nix-community/nixvim):
   A Neovim distribution configured using a NixOS module.
 - [`nixCats-nvim`](https://github.com/BirdeeHub/nixCats-nvim):
-  A project with a similar philosophy to this one
-  that organises plugins into categories.
+  A project that organises plugins into categories.
+  It also separates lua and nix configuration.
 - [`lazy-nix-helper.nvim`](https://github.com/b-src/lazy-nix-helper.nvim):
   For lazy.nvim users who would like to manage plugins with Nix,
   but load them with lazy.nvim.
