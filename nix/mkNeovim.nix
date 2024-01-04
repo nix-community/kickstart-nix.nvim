@@ -11,7 +11,6 @@ with lib;
     devPlugins ? [], # List of dev plugins (will be bootstrapped)
     extraPackages ? [], # Extra runtime dependencies (e.g. ripgrep, ...)
     # The below arguments can typically be left as their defaults
-    wrapRc ? true, # Wrap the init.lua?
     resolvedExtraLuaPackages ? [], # Additional lua packages (not plugins)
     extraPython3Packages ? p: [], # Additional python 3 packages
     withPython3 ? true,
@@ -70,7 +69,7 @@ with lib;
       '';
     };
 
-    customRC =
+    customRc =
       ''
         vim.loader.enable()
         vim.opt.rtp:prepend('${nvimRtp}/lua')
@@ -105,8 +104,6 @@ with lib;
         ''--set NVIM_APPNAME "${appName}"'')
       ++ (optional (externalPackages != [])
         ''--prefix PATH : "${makeBinPath externalPackages}"'')
-      ++ (optional wrapRc
-        ''--add-flags -u --add-flags "${pkgs.writeText "init.lua" customRC}"'')
       ++ (optional withSqlite 
         ''--set LIBSQLITE_CLIB_PATH "${pkgs.sqlite.out}/lib/libsqlite3.so"'')
       ++ (optional withSqlite 
@@ -129,6 +126,7 @@ with lib;
   in
     pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped (neovimConfig
       // {
+        luaRcContent = customRc;
         wrapperArgs =
           escapeShellArgs neovimConfig.wrapperArgs
           + " "
@@ -137,5 +135,5 @@ with lib;
           + extraMakeWrapperLuaCArgs
           + " "
           + extraMakeWrapperLuaArgs;
-        wrapRc = false;
+        wrapRc = true;
       })
