@@ -18,8 +18,10 @@ with lib;
     withSqlite ? true,
     withRuby ? false,
     withNodeJs ? false,
-    viAlias ? true,
-    vimAlias ? true,
+    # You probably don't want to create vi or vim aliases
+    # if the appName is something different than "nvim"
+    viAlias ? appName == "nvim",
+    vimAlias ? appName == "nvim",
   }: let
     defaultPlugin = {
       plugin = null; # e.g. nvim-lspconfig
