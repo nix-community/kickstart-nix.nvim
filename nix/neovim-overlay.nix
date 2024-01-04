@@ -1,16 +1,26 @@
+# This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
 {inputs}: final: prev:
 with final.pkgs.lib; let
   pkgs = final;
 
-  # Use this to create a plugin from an input
+  # Use this to create a plugin from a flake input
   mkNvimPlugin = src: pname:
     pkgs.vimUtils.buildVimPlugin {
       inherit pname src;
       version = src.lastModifiedDate;
     };
 
+  # This is the helper function that builds the Neovim derivation.
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {};
 
+  # A plugin can either be a package or an attrset, such as
+  # { plugin = <plugin>; # the package, e.g. pkgs.vimPlugins.nvim-cmp
+  #   config = <config>; # String; a config that will be loaded with the plugin
+  #   # Boolean; Whether to automatically load the plugin as a 'start' plugin,
+  #   # or as an 'opt' plugin, that can be loaded with `:packadd!`
+  #   optional = <true|false>; # Default: false
+  #   ... 
+  # }
   all-plugins = with pkgs.vimPlugins; [
     # plugins from nixpkgs go in here.
     # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins

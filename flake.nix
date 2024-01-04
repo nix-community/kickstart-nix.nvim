@@ -33,12 +33,14 @@
       pkgs = import nixpkgs {
         inherit system;
         overlays = [
+          # Import the overlay, so that the final Neovim derivation(s) can be accessed via pkgs.<nvim-pkg>
           neovim-overlay
         ];
       };
       shell = pkgs.mkShell {
         name = "nvim-devShell";
         buildInputs = with pkgs; [
+          # Tools for Lua and Nix development, useful for editing files in this repo
           lua-language-server
           nil
           stylua
