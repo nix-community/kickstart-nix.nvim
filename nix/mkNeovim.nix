@@ -66,12 +66,15 @@ with lib;
 
       buildPhase = ''
         mkdir -p $out/nvim
+        mkdir -p $out/lua
         rm init.lua
       '';
 
       installPhase = ''
-        mv after $out
-        mv lua $out
+        cp -r after $out/after
+        rm -r after
+        cp -r lua $out/lua
+        rm -r lua
         cp -r * $out/nvim
       '';
     };
