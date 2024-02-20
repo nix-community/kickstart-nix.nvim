@@ -36,7 +36,19 @@
 
 ![](https://github.com/mrcjkb/kickstart-nix.nvim/assets/12857160/84faa268-82de-4401-acf3-efddc26dd58a)
 
-If Nix and Neovim have one thing in common, it's that many new users don't know where to get started. Most Nix-based Neovim setups assume deep expertise in both realms, abstracting away Neovim's core functionalities as well as the Nix internals used to build a Neovim config. `kickstart-nix.nvim` is different: It's geared for users of all levels, making the migration of Neovim configurations to Nix straightforward.
+If Nix and Neovim have one thing in common,
+it's that many new users don't know where to get started.
+Most Nix-based Neovim setups assume deep expertise in both realms,
+abstracting away Neovim's core functionalities
+as well as the Nix internals used to build a Neovim config. 
+Frameworks and module-based DSLs are opinionated and difficult to diverge from
+with one's own modifications.
+
+`kickstart-nix.nvim` is different: 
+It's geared for users of all levels,
+making the migration of Neovim configurations to Nix straightforward.
+This project aims to be as simple as possible, while allowing
+for maximum flexibility.
 
 > [!NOTE]
 >
@@ -46,14 +58,36 @@ If Nix and Neovim have one thing in common, it's that many new users don't know 
 
 ## Quick Links
 
+- [Philosophy](#philosophy)
 - [Test drive](#test-drive)
 - [Usage](#usage)
 - [Installation](#installation)
-- [Philosophy](#philosophy)
 - [Design](#design)
 - [Pre-configured plugins](#pre-configured-plugins)
 - [Syncing updates](#syncing-updates)
 - [Alternative / similar projects](#alternative--similar-projects)
+
+## Philosophy
+
+- KISS principle with sane defaults.
+- Manage plugins + external dependencies using Nix
+  (managing plugins shouldn't be the responsibility of a plugin).
+- Configuration entirely in Lua[^1] (Vimscript is also possible).
+  This makes it easy to migrate from non-nix dotfiles.
+- Usable on any device with Neovim and Nix installed.
+- Ability to create multiple derivations with different sets of plugins,
+  and simple regex filters to exclude config files.
+- Use either nixpkgs or flake inputs as plugin sources.
+- Use Neovim's built-in loading mechanisms. See:
+    - [`:h initialization`](https://neovim.io/doc/user/starting.html#initialization)
+    - [`:h runtimepath`](https://neovim.io/doc/user/options.html#'runtimepath')
+    - [`:h packadd`](https://neovim.io/doc/user/repeat.html#%3Apackadd)
+- Use Neovim's built-in LSP client,
+  with Nix managing language servers.
+
+[^1]: The absence of a Nix module DSL for Neovim configuration is deliberate.
+      If you were to copy the `nvim` directory to `$XDG_CONFIG_HOME`,
+      and install the plugins, it would work out of the box.
 
 ## Test drive
 
@@ -72,6 +106,14 @@ to start a repo based on this template. **Do _not_ fork it**.
 1. Add/remove plugin configs to/from the `nvim/plugin` directory.
 1. Modify as you wish (you will probably want to add a color theme, ...).
    See: [Design](#design).
+1. You can create more than one package using the `mkNeovim` function by
+    - Passing different plugin lists.
+    - Adding `ignoreConfigRegexes` (e.g. `= [ "^ftplugin/.*.lua"]`).
+
+> [!TIP]
+>
+> The nix and lua files contain comments explaining
+> what everything does in detail.
 
 ## Installation
 
@@ -102,25 +144,6 @@ With Nix installed (flakes enabled), from the repo root:
 ```console
 nix profile install .#nvim
 ```
-
-## Philosophy
-
-- KISS principle with sane defaults.
-- Manage plugins + external dependencies using Nix
-  (managing plugins shouldn't be the responsibility of a plugin).
-- Configuration entirely in Lua[^1] (Vimscript is also possible).
-  This makes it easy to migrate from non-nix dotfiles.
-- Usable on any device with Neovim and Nix installed.
-- Ability to create multiple derivations with different sets of plugins.
-- Use either nixpkgs or flake inputs as plugin source.
-- Use Neovim's built-in loading mechanisms.
-    - See [`:h initializaion`](https://neovim.io/doc/user/starting.html#initialization)
-      and [`:h runtimepath`](https://neovim.io/doc/user/options.html#'runtimepath').
-- Use Neovim's built-in LSP client.
-
-[^1]: The absence of a Nix module DSL for Neovim configuration is deliberate.
-      If you were to copy the `nvim` directory to `$XDG_CONFIG_HOME`,
-      and install the plugins, it would work out of the box.
 
 ## Design
 

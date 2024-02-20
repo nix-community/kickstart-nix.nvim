@@ -11,6 +11,9 @@ with lib;
     # List of dev plugins (will be bootstrapped) - useful for plugin developers
     # { name = <plugin-name>; url = <git-url>; }
     devPlugins ? [],
+    # Regexes for config files to ignore, relative to the nvim directory.
+    # e.g. [ "^plugin/neodev.lua" "^ftplugin/.*.lua" ]
+    ignoreConfigRegexes ? [],
     extraPackages ? [], # Extra runtime dependencies (e.g. ripgrep, ...)
     # The below arguments can typically be left as their defaults
     resolvedExtraLuaPackages ? [], # Additional lua packages (not plugins), e.g. from luarocks.org
@@ -55,6 +58,21 @@ with lib;
       plugins = normalizedPlugins;
     };
 
+    # This uses the ignoreConfigRegexes list to filter
+    # the nvim directory
+    nvimRtpSrc = let
+      src = ../nvim;
+    in
+      lib.cleanSourceWith {
+        inherit src;
+        name = "nvim-rtp-src";
+        filter = path: tyoe: let
+          srcPrefix = toString src + "/";
+          relPath = lib.removePrefix srcPrefix (toString path);
+        in
+          lib.all (regex: builtins.match regex relPath == null) ignoreConfigRegexes;
+      };
+
     # Split runtimepath into 3 directories:
     # - lua, to be prepended to the rtp at the beginning of init.lua
     # - nvim, containing plugin, ftplugin, ... subdirectories
@@ -62,7 +80,7 @@ with lib;
     # See also: https://neovim.io/doc/user/starting.html
     nvimRtp = stdenv.mkDerivation {
       name = "nvim-rtp";
-      src = ../nvim;
+      src = nvimRtpSrc;
 
       buildPhase = ''
         mkdir -p $out/nvim

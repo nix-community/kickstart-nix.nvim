@@ -19,7 +19,7 @@ with final.pkgs.lib; let
   #   # Boolean; Whether to automatically load the plugin as a 'start' plugin,
   #   # or as an 'opt' plugin, that can be loaded with `:packadd!`
   #   optional = <true|false>; # Default: false
-  #   ... 
+  #   ...
   # }
   all-plugins = with pkgs.vimPlugins; [
     # plugins from nixpkgs go in here.
@@ -93,4 +93,17 @@ in {
   };
 
   # You can add as many derivations as you like.
+  # Use `ignoreConfigRegexes` to filter out config
+  # files you would not like to include.
+  #
+  # For example:
+  #
+  # nvim-pkg-no-telescope = mkNeovim {
+  #   plugins = [];
+  #   ignoreConfigRegexes = [
+  #     "^plugin/telescope.lua"
+  #     "^ftplugin/.*.lua"
+  #   ];
+  #   inherit extraPackages;
+  # };
 }
