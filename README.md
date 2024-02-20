@@ -108,7 +108,7 @@ to start a repo based on this template. **Do _not_ fork it**.
    See: [Design](#design).
 1. You can create more than one package using the `mkNeovim` function by
     - Passing different plugin lists.
-    - Adding `ignoreConfigRegexes` (e.g. `= [ "^ftplugin/.*.lua"]`).
+    - Adding `ignoreConfigRegexes` (e.g. `= [ "^ftplugin/.*.lua" ]`).
 
 > [!TIP]
 >
