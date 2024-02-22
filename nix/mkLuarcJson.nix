@@ -3,7 +3,7 @@
 {
   pkgs,
   lib,
-  stdenv,
+  ...
 }: {
   # list of plugins that have a /lua directory
   nvim ? pkgs.neovim-unwrapped,
