@@ -6,6 +6,8 @@
   stdenv,
 }: {
   # list of plugins that have a /lua directory
+  nvim ? pkgs.neovim-unwrapped,
+  neodev-types ? "stable",
   plugins ? [],
 }: let
   plugin-lib-dirs = lib.lists.map (plugin:
@@ -25,8 +27,8 @@
       workspace = {
         library =
           [
-            "${pkgs.neovim-unwrapped}/share/nvim/runtime/lua"
-            "${pkgs.vimPlugins.neodev-nvim}/types/stable"
+            "${nvim}/share/nvim/runtime/lua"
+            "${pkgs.vimPlugins.neodev-nvim}/types/${neodev-types}"
             "\${3rd}/busted/library"
             "\${3rd}/luassert/library"
           ]
