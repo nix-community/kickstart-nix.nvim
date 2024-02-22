@@ -13,6 +13,11 @@ with final.pkgs.lib; let
   # This is the helper function that builds the Neovim derivation.
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {};
 
+  # This is a function that can be used to generate a .luarc.json
+  # containing the Neovim API all plugins in the workspace directory.
+  # The generated file can be symlinked in the devShell's shellHook.
+  mkLuarcJson = pkgs.callPackage ./mkLuarcJson.nix {};
+
   # A plugin can either be a package or an attrset, such as
   # { plugin = <plugin>; # the package, e.g. pkgs.vimPlugins.nvim-cmp
   #   config = <config>; # String; a config that will be loaded with the plugin
@@ -56,7 +61,6 @@ with final.pkgs.lib; let
     nvim-treesitter-context # nvim-treesitter-context
     # ^ UI
     # language support
-    neodev-nvim # adds support for Neovim's Lua API to lua-language-server | https://github.com/folke/neodev.nvim/
     # ^ language support
     # navigation/editing enhancement plugins
     vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
@@ -90,6 +94,11 @@ in {
   nvim-pkg = mkNeovim {
     plugins = all-plugins;
     inherit extraPackages;
+  };
+
+  # This can be symlinked in the devShell's shellHook
+  nvim-luarc-json = mkLuarcJson {
+    plugins = all-plugins;
   };
 
   # You can add as many derivations as you like.

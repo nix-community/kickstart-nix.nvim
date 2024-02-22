@@ -59,6 +59,7 @@ for maximum flexibility.
 ## Quick Links
 
 - [Philosophy](#philosophy)
+- [Features](#features)
 - [Test drive](#test-drive)
 - [Usage](#usage)
 - [Installation](#installation)
@@ -74,16 +75,21 @@ for maximum flexibility.
   (managing plugins shouldn't be the responsibility of a plugin).
 - Configuration entirely in Lua[^1] (Vimscript is also possible).
   This makes it easy to migrate from non-nix dotfiles.
-- Usable on any device with Neovim and Nix installed.
-- Ability to create multiple derivations with different sets of plugins,
-  and simple regex filters to exclude config files.
-- Use either nixpkgs or flake inputs as plugin sources.
 - Use Neovim's built-in loading mechanisms. See:
     - [`:h initialization`](https://neovim.io/doc/user/starting.html#initialization)
     - [`:h runtimepath`](https://neovim.io/doc/user/options.html#'runtimepath')
     - [`:h packadd`](https://neovim.io/doc/user/repeat.html#%3Apackadd)
-- Use Neovim's built-in LSP client,
-  with Nix managing language servers.
+- Use Neovim's built-in LSP client, with Nix managing language servers.
+
+## Features
+
+- Use either nixpkgs or flake inputs as plugin sources.
+- Usable on any device with Neovim and Nix installed.
+- Ability to create multiple derivations with different sets of plugins,
+  and simple regex filters to exclude config files.
+- Uses Nix to generate a `.luarc.json` in the devShell's `shellHook`.
+  This sets up lua-language-server to recognize all plugins
+  and the Neovim API.
 
 [^1]: The absence of a Nix module DSL for Neovim configuration is deliberate.
       If you were to copy the `nvim` directory to `$XDG_CONFIG_HOME`,

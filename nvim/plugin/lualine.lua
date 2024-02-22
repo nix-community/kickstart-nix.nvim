@@ -1,5 +1,5 @@
 local navic = require('nvim-navic')
-navic.setup()
+navic.setup {}
 
 ---Indicators for special modes,
 ---@return string status

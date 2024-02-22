@@ -46,6 +46,10 @@
           stylua
           luajitPackages.luacheck
         ];
+        shellHook = ''
+          # symlink the .luarc.json generated in the overlay
+          ln -fs ${pkgs.nvim-luarc-json} .luarc.json
+        '';
       };
     in {
       packages = rec {
