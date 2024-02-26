@@ -4,13 +4,13 @@ local keymap = vim.keymap
 local diagnostic = vim.diagnostic
 
 -- Yank from current position till end of current line
-keymap.set('n', 'Y', 'y$', { silent = true, desc = 'yank to end of line' })
+keymap.set('n', 'Y', 'y$', { silent = true, desc = '[Y]ank to end of line' })
 
 -- Buffer list navigation
-keymap.set('n', '[b', vim.cmd.bprevious, { silent = true, desc = 'previous buffer' })
-keymap.set('n', ']b', vim.cmd.bnext, { silent = true, desc = 'next buffer' })
-keymap.set('n', '[B', vim.cmd.bfirst, { silent = true, desc = 'first buffer' })
-keymap.set('n', ']B', vim.cmd.blast, { silent = true, desc = 'last buffer' })
+keymap.set('n', '[b', vim.cmd.bprevious, { silent = true, desc = 'previous [b]uffer' })
+keymap.set('n', ']b', vim.cmd.bnext, { silent = true, desc = 'next [b]uffer' })
+keymap.set('n', '[B', vim.cmd.bfirst, { silent = true, desc = 'first [B]uffer' })
+keymap.set('n', ']B', vim.cmd.blast, { silent = true, desc = 'last [B]uffer' })
 
 -- Toggle the quickfix list (only opens if it is populated)
 local function toggle_qf_list()
@@ -60,8 +60,8 @@ local function cright()
   }
 end
 
-keymap.set('n', '[c', cleft, { silent = true, desc = 'cycle quickfix left' })
-keymap.set('n', ']c', cright, { silent = true, desc = 'cycle quickfix right' })
+keymap.set('n', '[c', cleft, { silent = true, desc = '[c]ycle quickfix left' })
+keymap.set('n', ']c', cright, { silent = true, desc = '[c]ycle quickfix right' })
 keymap.set('n', '[C', vim.cmd.cfirst, { silent = true, desc = 'first quickfix entry' })
 keymap.set('n', ']C', vim.cmd.clast, { silent = true, desc = 'last quickfix entry' })
 
@@ -81,34 +81,34 @@ local function lright()
   }
 end
 
-keymap.set('n', '[l', lleft, { silent = true, desc = 'cycle loclist left' })
-keymap.set('n', ']l', lright, { silent = true, desc = 'cycle loclist right' })
-keymap.set('n', '[L', vim.cmd.lfirst, { silent = true, desc = 'first loclist entry' })
-keymap.set('n', ']L', vim.cmd.llast, { silent = true, desc = 'last loclist entry' })
+keymap.set('n', '[l', lleft, { silent = true, desc = 'cycle [l]oclist left' })
+keymap.set('n', ']l', lright, { silent = true, desc = 'cycle [l]oclist right' })
+keymap.set('n', '[L', vim.cmd.lfirst, { silent = true, desc = 'first [L]oclist entry' })
+keymap.set('n', ']L', vim.cmd.llast, { silent = true, desc = 'last [L]oclist entry' })
 
 -- Resize vertical splits
 local toIntegral = math.ceil
 keymap.set('n', '<leader>w+', function()
   local curWinWidth = api.nvim_win_get_width(0)
   api.nvim_win_set_width(0, toIntegral(curWinWidth * 3 / 2))
-end, { silent = true, desc = 'inc window width' })
+end, { silent = true, desc = 'inc window [w]idth' })
 keymap.set('n', '<leader>w-', function()
   local curWinWidth = api.nvim_win_get_width(0)
   api.nvim_win_set_width(0, toIntegral(curWinWidth * 2 / 3))
-end, { silent = true, desc = 'dec window width' })
+end, { silent = true, desc = 'dec window [w]idth' })
 keymap.set('n', '<leader>h+', function()
   local curWinHeight = api.nvim_win_get_height(0)
   api.nvim_win_set_height(0, toIntegral(curWinHeight * 3 / 2))
-end, { silent = true, desc = 'inc window height' })
+end, { silent = true, desc = 'inc window [h]eight' })
 keymap.set('n', '<leader>h-', function()
   local curWinHeight = api.nvim_win_get_height(0)
   api.nvim_win_set_height(0, toIntegral(curWinHeight * 2 / 3))
-end, { silent = true, desc = 'dec window height' })
+end, { silent = true, desc = 'dec window [h]eight' })
 
 -- Close floating windows [Neovim 0.10 and above]
 keymap.set('n', '<leader>fq', function()
   vim.cmd('fclose!')
-end, { silent = true, desc = 'close all floating windows' })
+end, { silent = true, desc = '[f]loating windows: [q]uit/close all' })
 
 -- Remap Esc to switch to normal mode and Ctrl-Esc to pass Esc to terminal
 keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'switch to normal mode' })
@@ -123,8 +123,8 @@ keymap.set('c', '%%', function()
   end
 end, { expr = true, desc = "expand to current buffer's directory" })
 
-keymap.set('n', '<space>tn', vim.cmd.tabnew, { desc = 'new tab' })
-keymap.set('n', '<space>tq', vim.cmd.tabclose, { desc = 'close tab' })
+keymap.set('n', '<space>tn', vim.cmd.tabnew, { desc = '[t]ab: [n]ew' })
+keymap.set('n', '<space>tq', vim.cmd.tabclose, { desc = '[t]ab: [q]uit/close' })
 
 local severity = diagnostic.severity
 
@@ -136,50 +136,50 @@ keymap.set('n', '<space>e', function()
   end
   vim.api.nvim_win_set_config(winid or 0, { focusable = true })
 end, { noremap = true, silent = true, desc = 'diagnostics floating window' })
-keymap.set('n', '[d', diagnostic.goto_prev, { noremap = true, silent = true, desc = 'previous diagnostic' })
-keymap.set('n', ']d', diagnostic.goto_next, { noremap = true, silent = true, desc = 'next diagnostic' })
+keymap.set('n', '[d', diagnostic.goto_prev, { noremap = true, silent = true, desc = 'previous [d]iagnostic' })
+keymap.set('n', ']d', diagnostic.goto_next, { noremap = true, silent = true, desc = 'next [d]iagnostic' })
 keymap.set('n', '[e', function()
   diagnostic.goto_prev {
     severity = severity.ERROR,
   }
-end, { noremap = true, silent = true, desc = 'previous error diagnostic' })
+end, { noremap = true, silent = true, desc = 'previous [e]rror diagnostic' })
 keymap.set('n', ']e', function()
   diagnostic.goto_next {
     severity = severity.ERROR,
   }
-end, { noremap = true, silent = true, desc = 'next error diagnostic' })
+end, { noremap = true, silent = true, desc = 'next [e]rror diagnostic' })
 keymap.set('n', '[w', function()
   diagnostic.goto_prev {
     severity = severity.WARN,
   }
-end, { noremap = true, silent = true, desc = 'previous warning diagnostic' })
+end, { noremap = true, silent = true, desc = 'previous [w]arning diagnostic' })
 keymap.set('n', ']w', function()
   diagnostic.goto_next {
     severity = severity.WARN,
   }
-end, { noremap = true, silent = true, desc = 'next warning diagnostic' })
+end, { noremap = true, silent = true, desc = 'next [w]arning diagnostic' })
 keymap.set('n', '[h', function()
   diagnostic.goto_prev {
     severity = severity.HINT,
   }
-end, { noremap = true, silent = true, desc = 'previous hint diagnostic' })
+end, { noremap = true, silent = true, desc = 'previous [h]int diagnostic' })
 keymap.set('n', ']h', function()
   diagnostic.goto_next {
     severity = severity.HINT,
   }
-end, { noremap = true, silent = true, desc = 'next hint diagnostic' })
+end, { noremap = true, silent = true, desc = 'next [h]int diagnostic' })
 
 local function toggle_spell_check()
   ---@diagnostic disable-next-line: param-type-mismatch
   vim.opt.spell = not (vim.opt.spell:get())
 end
 
-keymap.set('n', '<leader>S', toggle_spell_check, { noremap = true, silent = true, desc = 'toggle spell' })
+keymap.set('n', '<leader>S', toggle_spell_check, { noremap = true, silent = true, desc = 'toggle [S]pell' })
 
-keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'move down half-page and center' })
-keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'move up half-page and center' })
-keymap.set('n', '<C-f>', '<C-f>zz', { desc = 'move down full-page and center' })
-keymap.set('n', '<C-b>', '<C-b>zz', { desc = 'move up full-page and center' })
+keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'move [d]own half-page and center' })
+keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'move [u]p half-page and center' })
+keymap.set('n', '<C-f>', '<C-f>zz', { desc = 'move DOWN [f]ull-page and center' })
+keymap.set('n', '<C-b>', '<C-b>zz', { desc = 'move UP full-page and center' })
 
 --- Disabled keymaps [enable at your own risk]
 
