@@ -1,3 +1,8 @@
+if vim.g.did_load_diffview_plugin then
+  return
+end
+vim.g.did_load_diffview_plugin = true
+
 vim.keymap.set('n', '<leader>gfb', function()
   vim.cmd.DiffviewFileHistory(vim.api.nvim_buf_get_name(0))
 end, { desc = 'diffview [g]it [f]ile history (current [b]uffer)' })
