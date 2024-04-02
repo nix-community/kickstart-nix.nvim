@@ -278,6 +278,13 @@ calls `nvim` with `-u /nix/store/path/to/generated-init.lua`.
 So it won't source a local `init.lua` file.
 To work around this, you can put scripts in the `plugin` or `after/plugin` directory.
 
+> [!TIP]
+>
+> If you are starting out, and want to test things without having to
+> stage or commit new files for changes to take effect,
+> you can remove the `.git` directory and re-initialize it (`git init`)
+> when you are done.
+
 ## :link: Alternative / similar projects
 
 - [`kickstart.nvim`](https://github.com/nvim-lua/kickstart.nvim):
