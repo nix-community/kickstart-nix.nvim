@@ -250,6 +250,34 @@ git fetch upstream
 git merge upstream/main --allow-unrelated-histories
 ```
 
+## :pencil: Editing your config
+
+When your neovim setup is a nix derivation, editing your config
+demands a different workflow than you are used to without nix.
+Here is how I usually do it:
+
+- Perform modifications and stage any new files[^2].
+- Run `nix run /path/to/neovim/#nvim`
+  or `nix run /path/to/neovim/#nvim -- <nvim-args>`
+
+[^2]: When adding new files, nix flakes won't pick them up unless they
+      have been committed or staged.
+
+This requires a rebuild of the `nvim` derivation, but has the advantage
+that if anything breaks, it's only broken during your test run.
+
+If you want an impure, but faster feedback loop,
+you can use `$XDG_CONFIG_HOME/$NVIM_APPNAME`[^3], where `$NVIM_APPNAME` 
+defaults to `nvim` if the `appName` attribute is not set 
+in the `mkNeovim` function.
+
+[^3]: Assuming Linux. Refer to `:h initialization` for Darwin.
+
+This has one caveat: The wrapper which nix generates for the derivation
+calls `nvim` with `-u /nix/store/path/to/generated-init.lua`.
+So it won't source a local `init.lua` file.
+To work around this, you can put scripts in the `plugin` or `after/plugin` directory.
+
 ## :link: Alternative / similar projects
 
 - [`kickstart.nvim`](https://github.com/nvim-lua/kickstart.nvim):
