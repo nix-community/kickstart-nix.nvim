@@ -1,7 +1,7 @@
 <!-- markdownlint-disable -->
 <br />
 <div align="center">
-  <a href="https://github.com/mrcjkb/kickstart-nix.nvim">
+  <a href="https://github.com/nix-community/kickstart-nix.nvim">
     <img src="./nvim-nix.svg" alt="kickstart-nix.nvim">
   </a>
   <!-- TODO: -->
@@ -11,11 +11,11 @@
     <!-- <a href="./nvim/doc/kickstart-nix.txt"><strong>Explore the docs »</strong></a> -->
     <!-- <br /> -->
     <!-- <br /> -->
-    <!-- <a href="https://github.com/mrcjkb/kickstart-nix.nvim/issues/new?assignees=&labels=bug&projects=&template=bug_report.yml">Report Bug</a> -->
+    <!-- <a href="https://github.com/nix-community/kickstart-nix.nvim/issues/new?assignees=&labels=bug&projects=&template=bug_report.yml">Report Bug</a> -->
     <!-- · -->
-    <!-- <a href="https://github.com/mrcjkb/kickstart-nix.nvim/issues/new?assignees=&labels=enhancement&projects=&template=feature_request.yml">Request Feature</a> -->
+    <!-- <a href="https://github.com/nix-community/kickstart-nix.nvim/issues/new?assignees=&labels=enhancement&projects=&template=feature_request.yml">Request Feature</a> -->
     <!-- · -->
-    <!-- <a href="https://github.com/mrcjkb/kickstart-nix.nvim/discussions/new?category=q-a">Ask Question</a> -->
+    <!-- <a href="https://github.com/nix-community/kickstart-nix.nvim/discussions/new?category=q-a">Ask Question</a> -->
   <!-- </p> -->
   <p>❄️</p>
   <p>
@@ -34,7 +34,7 @@
 [![GPL2 License][license-shield]][license-url]
 [![Issues][issues-shield]][issues-url]
 
-![](https://github.com/mrcjkb/kickstart-nix.nvim/assets/12857160/84faa268-82de-4401-acf3-efddc26dd58a)
+![](https://github.com/nix-community/kickstart-nix.nvim/assets/12857160/84faa268-82de-4401-acf3-efddc26dd58a)
 
 ## :grey_question: Why kickstart-nix.nvim
 
@@ -91,12 +91,12 @@ If you have Nix installed (with [flakes](https://nixos.wiki/wiki/Flakes) enabled
 you can test drive this by running:
 
 ```console
-nix run "github:mrcjkb/kickstart-nix.nvim"
+nix run "github:nix-community/kickstart-nix.nvim"
 ```
 
 ## :books: Usage
 
-1. Click on [Use this template](https://github.com/mrcjkb/kickstart-nix.nvim/generate)
+1. Click on [Use this template](https://github.com/nix-community/kickstart-nix.nvim/generate)
 to start a repo based on this template. **Do _not_ fork it**.
 1. Add/remove plugins to/from the [Neovim overlay](./nix/neovim-overlay.nix).
 1. Add/remove plugin configs to/from the `nvim/plugin` directory.
@@ -240,7 +240,7 @@ that were added later...
 Add this template as a remote:
 
 ```console
-git remote add upstream git@github.com:mrcjkb/kickstart-nix.nvim.git
+git remote add upstream git@github.com:nix-community/kickstart-nix.nvim.git
 ```
 
 Fetch and merge changes:
@@ -317,9 +317,9 @@ To work around this, you can put scripts in the `plugin` or `after/plugin` direc
 [nix-url]: https://nixos.org/
 [lua-shield]: https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white
 [lua-url]: https://www.lua.org/
-[license-shield]: https://img.shields.io/github/license/mrcjkb/kickstart-nix.nvim.svg?style=for-the-badge
-[license-url]: https://github.com/mrcjkb/kickstart-nix.nvim/blob/master/LICENSE
-[issues-shield]: https://img.shields.io/github/issues/mrcjkb/kickstart-nix.nvim.svg?style=for-the-badge
-[issues-url]: https://github.com/mrcjkb/kickstart-nix.nvim/issues
-[license-shield]: https://img.shields.io/github/license/mrcjkb/kickstart-nix.nvim.svg?style=for-the-badge
-[license-url]: https://github.com/mrcjkb/kickstart-nix.nvim/blob/master/LICENSE
+[license-shield]: https://img.shields.io/github/license/nix-community/kickstart-nix.nvim.svg?style=for-the-badge
+[license-url]: https://github.com/nix-community/kickstart-nix.nvim/blob/master/LICENSE
+[issues-shield]: https://img.shields.io/github/issues/nix-community/kickstart-nix.nvim.svg?style=for-the-badge
+[issues-url]: https://github.com/nix-community/kickstart-nix.nvim/issues
+[license-shield]: https://img.shields.io/github/license/nix-community/kickstart-nix.nvim.svg?style=for-the-badge
+[license-url]: https://github.com/nix-community/kickstart-nix.nvim/blob/master/LICENSE
