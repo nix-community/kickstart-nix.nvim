@@ -91,7 +91,7 @@ vim.diagnostic.config {
     focusable = false,
     style = 'minimal',
     border = 'rounded',
-    source = 'always',
+    source = 'if_many',
     header = '',
     prefix = '',
   },
