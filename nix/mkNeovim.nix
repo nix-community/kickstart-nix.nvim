@@ -6,7 +6,9 @@
 }:
 with lib;
   {
-    appName ? null, # NVIM_APPNAME - Defaults to 'nvim'
+    # NVIM_APPNAME - Defaults to 'nvim' if not set.
+    # If set to something else, this will also rename the binary.
+    appName ? null,
     plugins ? [], # List of plugins
     # List of dev plugins (will be bootstrapped) - useful for plugin developers
     # { name = <plugin-name>; url = <git-url>; }
@@ -165,9 +167,9 @@ with lib;
           concatMapStringsSep ";" pkgs.luaPackages.getLuaPath
           resolvedExtraLuaPackages
         }"'';
-  in
+
     # wrapNeovimUnstable is the nixpkgs utility function for building a Neovim derivation.
-    pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped (neovimConfig
+    neovim-wrapped = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped (neovimConfig
       // {
         luaRcContent = initLua;
         wrapperArgs =
@@ -179,4 +181,15 @@ with lib;
           + " "
           + extraMakeWrapperLuaArgs;
         wrapRc = true;
-      })
+      });
+
+    isCustomAppName = appName != null && appName != "nvim";
+  in
+    neovim-wrapped.overrideAttrs (oa: {
+      buildPhase =
+        oa.buildPhase
+        # If a custom NVIM_APPNAME has been set, rename the `nvim` binary
+        + lib.optionalString isCustomAppName ''
+          mv $out/bin/nvim $out/bin/${lib.escapeShellArg appName}
+        '';
+    })
