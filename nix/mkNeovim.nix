@@ -17,8 +17,8 @@ with lib;
     # e.g. [ "^plugin/neogit.lua" "^ftplugin/.*.lua" ]
     ignoreConfigRegexes ? [],
     extraPackages ? [], # Extra runtime dependencies (e.g. ripgrep, ...)
+    extraLuaPackages ? ps: [], # Additional lua packages (not plugins), e.g. from luarocks.org
     # The below arguments can typically be left as their defaults
-    resolvedExtraLuaPackages ? [], # Additional lua packages (not plugins), e.g. from luarocks.org
     extraPython3Packages ? p: [], # Additional python 3 packages
     withPython3 ? true, # Build Neovim with Python 3 support?
     withRuby ? false, # Build Neovim with Ruby support?
@@ -152,21 +152,18 @@ with lib;
         ''--set LIBSQLITE "${pkgs.sqlite.out}/lib/libsqlite3.so"'')
     );
 
+    luaPackages = pkgs.neovim-unwrapped.lua.pkgs;
+    resolvedExtraLuaPackages = extraLuaPackages luaPackages;
+
     # Native Lua libraries
-    extraMakeWrapperLuaCArgs = optionalString (resolvedExtraLuaPackages != []) ''
-      --suffix LUA_CPATH ";" "${
-        lib.concatMapStringsSep ";" pkgs.luaPackages.getLuaCPath
-        resolvedExtraLuaPackages
-      }"'';
+    extraMakeWrapperLuaCArgs =
+      optionalString (resolvedExtraLuaPackages != []) ''
+        --suffix LUA_CPATH ";" "${concatMapStringsSep ";" luaPackages.getLuaCPath resolvedExtraLuaPackages}"'';
 
     # Lua libraries
     extraMakeWrapperLuaArgs =
-      optionalString (resolvedExtraLuaPackages != [])
-      ''
-        --suffix LUA_PATH ";" "${
-          concatMapStringsSep ";" pkgs.luaPackages.getLuaPath
-          resolvedExtraLuaPackages
-        }"'';
+      optionalString (resolvedExtraLuaPackages != []) ''
+        --suffix LUA_PATH ";" "${concatMapStringsSep ";" luaPackages.getLuaPath resolvedExtraLuaPackages}"'';
 
     # wrapNeovimUnstable is the nixpkgs utility function for building a Neovim derivation.
     neovim-wrapped = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped (neovimConfig
