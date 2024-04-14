@@ -133,6 +133,13 @@ environment.systemPackages = with pkgs; [
 ];
 ```
 
+> [!IMPORTANT]
+>
+> This flake uses `nixpkgs.wrapNeovimUnstable`, which has an
+> unstable signature. If you set `nixpkgs.follows = "nixpkgs";`
+> when importing this into your flake.nix, it may break.
+> Especially if your nixpkgs input pins a different branch.
+
 ### :penguin: Non-NixOS
 
 With Nix installed (flakes enabled), from the repo root:
