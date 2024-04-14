@@ -84,20 +84,12 @@ with final.pkgs.lib; let
     lua-language-server
     nil # nix LSP
   ];
-
-  # These are runtime lua dependencies.
-  extraLuaPackages = ps:
-    with ps; [
-      # LuaSnip dependency.
-      jsregexp
-    ];
 in {
   # This is the neovim derivation
   # returned by the overlay
   nvim-pkg = mkNeovim {
     plugins = all-plugins;
     inherit extraPackages;
-    inherit extraLuaPackages;
   };
 
   # This can be symlinked in the devShell's shellHook
