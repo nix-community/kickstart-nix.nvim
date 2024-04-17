@@ -87,7 +87,7 @@ for maximum flexibility.
 
 ## :bicyclist: Test drive
 
-If you have Nix installed (with [flakes](https://nixos.wiki/wiki/Flakes) enabled),
+If you have Nix installed (with [flakes](https://wiki.nixos.org/wiki/Flakes) enabled),
 you can test drive this by running:
 
 ```console
