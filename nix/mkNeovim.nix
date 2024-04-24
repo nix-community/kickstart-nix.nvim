@@ -170,7 +170,7 @@ with lib;
       ''--suffix LUA_PATH ";" "${concatMapStringsSep ";" luaPackages.getLuaPath resolvedExtraLuaPackages}"'';
 
     # wrapNeovimUnstable is the nixpkgs utility function for building a Neovim derivation.
-    neovim-wrapped = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped (neovimConfig
+    neovim-wrapped = pkgs-wrapNeovim.wrapNeovimUnstable pkgs.neovim-unwrapped (neovimConfig
       // {
         luaRcContent = initLua;
         wrapperArgs =
