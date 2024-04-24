@@ -10,8 +10,12 @@ with final.pkgs.lib; let
       version = src.lastModifiedDate;
     };
 
+  # Make sure we use the pinned nixpkgs instance for wrapNeovimUnstable,
+  # otherwise it could have an incompatible signature when applying this overlay.
+  pkgs-wrapNeovim = inputs.nixpkgs.legacyPackages.${pkgs.system};
+
   # This is the helper function that builds the Neovim derivation.
-  mkNeovim = pkgs.callPackage ./mkNeovim.nix {};
+  mkNeovim = pkgs.callPackage ./mkNeovim.nix { inherit pkgs-wrapNeovim; };
 
   # A plugin can either be a package or an attrset, such as
   # { plugin = <plugin>; # the package, e.g. pkgs.vimPlugins.nvim-cmp

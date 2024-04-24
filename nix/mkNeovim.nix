@@ -3,6 +3,8 @@
   pkgs,
   lib,
   stdenv,
+  # Set by the overlay to ensure we use a compatible version of `wrapNeovimUnstable`
+  pkgs-wrapNeovim ? pkgs,
 }:
 with lib;
   {
@@ -57,7 +59,7 @@ with lib;
 
     # This nixpkgs util function creates an attrset
     # that pkgs.wrapNeovimUnstable uses to configure the Neovim build.
-    neovimConfig = pkgs.neovimUtils.makeNeovimConfig {
+    neovimConfig = pkgs-wrapNeovim.neovimUtils.makeNeovimConfig {
       inherit extraPython3Packages withPython3 withRuby withNodeJs viAlias vimAlias;
       plugins = normalizedPlugins;
     };
