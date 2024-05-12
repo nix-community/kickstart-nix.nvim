@@ -105,7 +105,7 @@ with lib;
 
     # The final init.lua content that we pass to the Neovim wrapper.
     # It wraps the user init.lua, prepends the lua lib directory to the RTP
-    # and appends the nvim and after directory to the RTP
+    # and prepends the nvim and after directory to the RTP
     # It also adds logic for bootstrapping dev plugins (for plugin developers)
     initLua =
       ''
@@ -134,10 +134,14 @@ with lib;
         '')
         devPlugins
       )
-      # Append nvim and after directories to the runtimepath
+      # Prepend nvim and after directories to the runtimepath
+      # NOTE: This is done after init.lua,
+      # because of a bug in Neovim that can cause filetype plugins
+      # to be sourced prematurely, see https://github.com/neovim/neovim/issues/19008
+      # We prepend to ensure that user ftplugins are sourced before builtin ftplugins.
       + ''
-        vim.opt.rtp:append('${nvimRtp}/nvim')
-        vim.opt.rtp:append('${nvimRtp}/after')
+        vim.opt.rtp:prepend('${nvimRtp}/nvim')
+        vim.opt.rtp:prepend('${nvimRtp}/after')
       '';
 
     # Add arguments to the Neovim wrapper script
