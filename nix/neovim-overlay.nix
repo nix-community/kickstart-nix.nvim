@@ -5,7 +5,7 @@ with final.pkgs.lib; let
 
   # Use this to create a plugin from a flake input
   mkNvimPlugin = src: pname:
-    pkgs.vimUtils.buildNeovimPlugin {
+    pkgs.vimUtils.buildVimPlugin {
       inherit pname src;
       version = src.lastModifiedDate;
     };
