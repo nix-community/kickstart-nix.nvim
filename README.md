@@ -101,7 +101,7 @@ to start a repo based on this template. **Do _not_ fork it**.
 1. Add/remove plugins to/from the [Neovim overlay](./nix/neovim-overlay.nix).
 1. Add/remove plugin configs to/from the `nvim/plugin` directory.
 1. Modify as you wish (you will probably want to add a color theme, ...).
-   See: [Design](#design).
+   See: [Design](#robot-design).
 1. You can create more than one package using the `mkNeovim` function by
     - Passing different plugin lists.
     - Adding `ignoreConfigRegexes` (e.g. `= [ "^ftplugin/.*.lua" ]`).
