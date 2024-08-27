@@ -301,6 +301,9 @@ To work around this, you can put scripts in the `plugin` or `after/plugin` direc
   Configured using a Nix module DSL.
 - [`NixVim`](https://github.com/nix-community/nixvim):
   A module system for Neovim, with a focus on plugin configs.
+- [`nixCats-nvim`](https://github.com/BirdeeHub/nixCats-nvim):
+  A project that organises plugins into categories.
+  It also separates lua and nix configuration.
 - [`lz.n`](https://github.com/nvim-neorocks/lz.n):
   A plugin-manager agnostic Lua library for lazy-loading plugins.
   Can be used with Nix.
