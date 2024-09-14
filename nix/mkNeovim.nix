@@ -32,8 +32,10 @@ with lib;
     withSqlite ? true, # Add sqlite? This is a dependency for some plugins
     # You probably don't want to create vi or vim aliases
     # if the appName is something different than "nvim"
-    viAlias ? appName == "nvim", # Add a "vi" binary to the build output as an alias?
-    vimAlias ? appName == "nvim", # Add a "vim" binary to the build output as an alias?
+    # Add a "vi" binary to the build output as an alias?
+    viAlias ? appName == null || appname == "nvim",
+    # Add a "vim" binary to the build output as an alias?
+    vimAlias ? appName == null || appname == "nvim",
   }: let
     # This is the structure of a plugin definition.
     # Each plugin in the `plugins` argument list can also be defined as this attrset
