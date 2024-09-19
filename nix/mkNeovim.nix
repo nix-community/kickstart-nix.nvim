@@ -33,9 +33,9 @@ with lib;
     # You probably don't want to create vi or vim aliases
     # if the appName is something different than "nvim"
     # Add a "vi" binary to the build output as an alias?
-    viAlias ? appName == null || appname == "nvim",
+    viAlias ? appName == null || appName == "nvim",
     # Add a "vim" binary to the build output as an alias?
-    vimAlias ? appName == null || appname == "nvim",
+    vimAlias ? appName == null || appName == "nvim",
   }: let
     # This is the structure of a plugin definition.
     # Each plugin in the `plugins` argument list can also be defined as this attrset
