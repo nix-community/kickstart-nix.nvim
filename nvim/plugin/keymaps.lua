@@ -174,6 +174,13 @@ keymap.set('n', ']h', function()
   }
 end, { noremap = true, silent = true, desc = 'next [h]int diagnostic' })
 
+local function buf_toggle_diagnostics()
+  local filter = { bufnr = api.nvim_get_current_buf() }
+  diagnostic.enable(not diagnostic.is_enabled(filter), filter)
+end
+
+keymap.set('n', '<space>dt', buf_toggle_diagnostics)
+
 local function toggle_spell_check()
   ---@diagnostic disable-next-line: param-type-mismatch
   vim.opt.spell = not (vim.opt.spell:get())
