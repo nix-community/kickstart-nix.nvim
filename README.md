@@ -261,7 +261,7 @@ git merge upstream/main --allow-unrelated-histories
 
 When your neovim setup is a nix derivation, editing your config
 demands a different workflow than you are used to without nix.
-Here is how I usually do it:
+A quick and easy way to test your changes:
 
 - Perform modifications and stage any new files[^2].
 - Run `nix run /path/to/neovim/#nvim`
@@ -273,24 +273,24 @@ Here is how I usually do it:
 This requires a rebuild of the `nvim` derivation, but has the advantage
 that if anything breaks, it's only broken during your test run.
 
-If you want an impure, but faster feedback loop,
-you can use `$XDG_CONFIG_HOME/$NVIM_APPNAME`[^3], where `$NVIM_APPNAME` 
-defaults to `nvim` if the `appName` attribute is not set 
+When developing locally you might want to have a faster feedback loop.
+Normally the whole Neovim configuration is copied into the store and 
+the wrapper which nix generates for the derivation calls `nvim`
+with `-u /nix/store/path/to/generated-init.lua`. 
+We can deactivate this behavior with `wrapRc = false`, so that the 
+config is loaded from `$XDG_CONFIG_HOME/$NVIM_APPNAME`[^3], where 
+`$NVIM_APPNAME` defaults to `nvim` if the `appName` attribute is not set 
 in the `mkNeovim` function.
+
+The Flake exposes a dev shell with a `nvim-dev` package. The lua configuration in `./nvim`
+is automatically symlinked to `~/.config/nvim-dev`.
+
+After activating the shell with `nix develop` or [nix-direnv](https://github.com/nix-community/nix-direnv)
+you can run Neovim with `nvim-dev` to automatically reload your lua configuration. All Nix changes still require a rebuild.
+
 
 [^3]: Assuming Linux. Refer to `:h initialization` for Darwin.
 
-This has one caveat: The wrapper which nix generates for the derivation
-calls `nvim` with `-u /nix/store/path/to/generated-init.lua`.
-So it won't source a local `init.lua` file.
-To work around this, you can put scripts in the `plugin` or `after/plugin` directory.
-
-> [!TIP]
->
-> If you are starting out, and want to test things without having to
-> stage or commit new files for changes to take effect,
-> you can remove the `.git` directory and re-initialize it (`git init`)
-> when you are done.
 
 ## :link: Alternative / similar projects
 
