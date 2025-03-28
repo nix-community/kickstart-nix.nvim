@@ -9,8 +9,6 @@ local g = vim.g
 -- g.mapleader = ' '
 -- g.maplocalleader = ' '
 
-opt.compatible = false
-
 -- Enable true colour support
 if fn.has('termguicolors') then
   opt.termguicolors = true
