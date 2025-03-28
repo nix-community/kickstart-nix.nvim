@@ -2,11 +2,10 @@ vim.loader.enable()
 
 local cmd = vim.cmd
 local opt = vim.o
-local g = vim.g
 
 -- <leader> key. Defaults to `\`. Some people prefer space.
--- g.mapleader = ' '
--- g.maplocalleader = ' '
+-- vim.g.mapleader = ' '
+-- vim.g.maplocalleader = ' '
 
 -- See :h <option> to see what the options do
 
@@ -85,8 +84,6 @@ vim.diagnostic.config {
     prefix = '',
   },
 }
-
-g.editorconfig = true
 
 vim.opt.colorcolumn = '100'
 
