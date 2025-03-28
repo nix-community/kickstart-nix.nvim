@@ -120,7 +120,6 @@ with lib;
     # It also adds logic for bootstrapping dev plugins (for plugin developers)
     initLua =
       ''
-        vim.loader.enable()
         -- prepend lua directory
         vim.opt.rtp:prepend('${nvimRtp}/lua')
       ''
