@@ -76,7 +76,7 @@ configs.setup {
         ['[P'] = '@parameter.outer',
       },
     },
-    nsp_interop = {
+    lsp_interop = {
       enable = true,
       peek_definition_code = {
         ['df'] = '@function.outer',
