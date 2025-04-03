@@ -36,6 +36,7 @@ opt.splitbelow = true
 opt.cmdheight = 0
 
 opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+opt.colorcolumn = '100'
 
 -- Configure Neovim diagnostic messages
 
@@ -84,8 +85,6 @@ vim.diagnostic.config {
     prefix = '',
   },
 }
-
-vim.opt.colorcolumn = '100'
 
 -- Native plugins
 cmd.filetype('plugin', 'indent', 'on')
