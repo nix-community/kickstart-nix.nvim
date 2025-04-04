@@ -1,18 +1,12 @@
+vim.loader.enable()
+
 local cmd = vim.cmd
-local fn = vim.fn
 local opt = vim.o
-local g = vim.g
 
 -- <leader> key. Defaults to `\`. Some people prefer space.
--- g.mapleader = ' '
--- g.maplocalleader = ' '
-
-opt.compatible = false
-
--- Enable true colour support
-if fn.has('termguicolors') then
-  opt.termguicolors = true
-end
+-- The default leader is '\'. Some people prefer <space>. Uncomment this if you do, too.
+-- vim.g.mapleader = ' '
+-- vim.g.maplocalleader = ' '
 
 -- See :h <option> to see what the options do
 
@@ -43,6 +37,7 @@ opt.splitbelow = true
 opt.cmdheight = 0
 
 opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+opt.colorcolumn = '100'
 
 -- Configure Neovim diagnostic messages
 
@@ -91,10 +86,6 @@ vim.diagnostic.config {
     prefix = '',
   },
 }
-
-g.editorconfig = true
-
-vim.opt.colorcolumn = '100'
 
 -- Native plugins
 cmd.filetype('plugin', 'indent', 'on')
