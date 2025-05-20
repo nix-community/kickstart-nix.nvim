@@ -157,7 +157,7 @@ with lib;
 
     # Add arguments to the Neovim wrapper script
     extraMakeWrapperArgs = let
-      sqliteLibExt = if stdenv.isDarwin then ".dylib" else ".so";
+      sqliteLibExt = stdenv.hostPlatform.extensions.sharedLibrary;
       sqliteLibPath = "${sqlite.out}/lib/libsqlite3${sqliteLibExt}";
     in builtins.concatStringsSep " " (
       # Set the NVIM_APPNAME environment variable
