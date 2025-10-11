@@ -115,7 +115,7 @@ to start a repo based on this template. **Do _not_ fork it**.
 
 ### :snowflake: NixOS (with flakes)
 
-1. Add your flake to you NixOS flake inputs.
+1. Add your flake to your NixOS flake inputs.
 1. Add the overlay provided by this flake.
 
 ```nix
