@@ -12,7 +12,7 @@ with final.pkgs.lib; let
 
   # Make sure we use the pinned nixpkgs instance for wrapNeovimUnstable,
   # otherwise it could have an incompatible signature when applying this overlay.
-  pkgs-locked = inputs.nixpkgs.legacyPackages.${pkgs.system};
+  pkgs-locked = inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 
   # This is the helper function that builds the Neovim derivation.
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {
